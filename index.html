@@ -46,6 +46,13 @@
         button:hover {
             background-color: #1e3c72;
         }
+
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -54,16 +61,32 @@
 <div class="container">
     <h2>User Information Form</h2>
 
-    <form>
+    <form id="myForm">
         <input type="text" placeholder="Name" required>
-        <input type="text" placeholder="Mobile No" required>
+        <input type="text" id="mobile" placeholder="Mobile No (10 digits)" required>
         <input type="text" placeholder="Father Name">
         <input type="text" placeholder="Mother Name">
         <input type="email" placeholder="Email" required>
         <input type="text" placeholder="Qualification">
         <button type="submit">Submit</button>
+        <div class="success" id="message"></div>
     </form>
 </div>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // stop refresh
+
+    var mobile = document.getElementById("mobile").value;
+
+    if (mobile.length !== 10 || isNaN(mobile)) {
+        alert("Mobile number must be 10 digits!");
+        return;
+    }
+
+    document.getElementById("message").innerText = "Form Submitted Successfully!";
+});
+</script>
 
 </body>
 </html>
