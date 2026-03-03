@@ -51,14 +51,10 @@
         /* HERO SECTION */
         .hero{
             padding:80px 10%;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            flex-wrap:wrap;
         }
 
         .hero-text{
-            max-width:500px;
+            max-width:600px;
         }
 
         .hero-text h2{
@@ -106,7 +102,7 @@
             color:#2a5298;
         }
 
-        input{
+        input, select{
             width:100%;
             padding:12px;
             margin:10px 0;
@@ -123,10 +119,15 @@
             color:white;
             border-radius:6px;
             cursor:pointer;
+            transition:0.3s;
         }
 
         button.submit-btn:hover{
             background:#1e3c72;
+        }
+
+        button.submit-btn:disabled{
+            background:grey;
         }
 
         .success{
@@ -177,7 +178,15 @@
             <input type="text" placeholder="Father Name">
             <input type="text" placeholder="Mother Name">
             <input type="email" placeholder="Email" required>
-            <input type="text" placeholder="Qualification">
+
+            <select id="qualification" required>
+                <option value="">Select Qualification</option>
+                <option>10th</option>
+                <option>12th</option>
+                <option>Undergraduate</option>
+                <option>Graduate</option>
+            </select>
+
             <button type="submit" class="submit-btn">Submit</button>
             <div class="success" id="message"></div>
         </form>
@@ -209,7 +218,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         father: document.querySelectorAll("input")[2].value,
         mother: document.querySelectorAll("input")[3].value,
         email: document.querySelectorAll("input")[4].value,
-        qualification: document.querySelectorAll("input")[5].value
+        qualification: document.getElementById("qualification").value
     };
 
     fetch("https://script.google.com/macros/s/AKfycbyskfIgUlrx7nfwCJ1B8UZNa1AGt59tPAEK14wK5l3q7xWmw1GWXxk6JJzYHYs90USv/exec", {
