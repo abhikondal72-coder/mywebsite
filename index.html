@@ -1,10 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abhi Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a5298;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>User Information Form</h2>
+
+    <form id="myForm">
+        <input type="text" placeholder="Name" required>
+        <input type="text" id="mobile" placeholder="Mobile No" required>
+        <input type="text" placeholder="Father Name">
+        <input type="text" placeholder="Mother Name">
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Qualification">
+        <button type="submit">Submit</button>
+        <div class="success" id="message"></div>
+    </form>
+</div>
+
 <script>
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     var mobile = document.getElementById("mobile").value;
 
-    // 10 digit validation
     if (mobile.length !== 10 || isNaN(mobile)) {
         alert("Mobile number must be 10 digits!");
         return;
@@ -33,3 +94,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     });
 });
 </script>
+
+</body>
+</html>
