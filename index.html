@@ -1,92 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Abhi Information Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #2a5298;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #1e3c72;
-        }
-
-        .success {
-            color: green;
-            text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-    <h2>User Information Form</h2>
-
-    <form id="myForm">
-        <input type="text" placeholder="Name" required>
-        <input type="text" id="mobile" placeholder="Mobile No (10 digits)" required>
-        <input type="text" placeholder="Father Name">
-        <input type="text" placeholder="Mother Name">
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Qualification">
-        <button type="submit">Submit</button>
-        <div class="success" id="message"></div>
-    </form>
-</div>
-
 <script>
 document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // stop refresh
+    event.preventDefault();
 
     var mobile = document.getElementById("mobile").value;
 
+    // 10 digit validation
     if (mobile.length !== 10 || isNaN(mobile)) {
         alert("Mobile number must be 10 digits!");
         return;
     }
 
-    document.getElementById("message").innerText = "Form Submitted Successfully!";
+    var formData = {
+        name: document.querySelectorAll("input")[0].value,
+        mobile: mobile,
+        father: document.querySelectorAll("input")[2].value,
+        mother: document.querySelectorAll("input")[3].value,
+        email: document.querySelectorAll("input")[4].value,
+        qualification: document.querySelectorAll("input")[5].value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbyskfIgUlrx7nfwCJ1B8UZNa1AGt59tPAEK14wK5l3q7xWmw1GWXxk6JJzYHYs90USv/exec", {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("message").innerText = "Data Saved Successfully!";
+        document.getElementById("myForm").reset();
+    })
+    .catch(error => {
+        alert("Error saving data");
+    });
 });
 </script>
-
-</body>
-</html>
