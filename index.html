@@ -35,6 +35,10 @@
             cursor: pointer;
         }
 
+        button:disabled {
+            background-color: grey;
+        }
+
         .success {
             color: green;
             text-align: center;
@@ -64,10 +68,14 @@
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    var submitBtn = document.querySelector("button");
+    submitBtn.disabled = true;
+
     var mobile = document.getElementById("mobile").value;
 
     if (mobile.length !== 10 || isNaN(mobile)) {
         alert("Mobile number must be 10 digits!");
+        submitBtn.disabled = false;
         return;
     }
 
@@ -88,9 +96,11 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     .then(data => {
         document.getElementById("message").innerText = "Data Saved Successfully!";
         document.getElementById("myForm").reset();
+        submitBtn.disabled = false;
     })
     .catch(error => {
         alert("Error saving data");
+        submitBtn.disabled = false;
     });
 });
 </script>
