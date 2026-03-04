@@ -1,264 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Abhi Tech Solutions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    .container {
+      animation: fadeIn 2s ease-in-out;
+    }
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins', sans-serif;
-        }
+    h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #ffcc00, #ffffff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-        body{
-            background:#f4f7fc;
-        }
+    p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
 
-        /* NAVBAR */
-        nav{
-            background:white;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 8%;
-            box-shadow:0 5px 15px rgba(0,0,0,0.05);
-            position:sticky;
-            top:0;
-            z-index:1000;
-        }
+    .btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+      background: #ffcc00;
+      color: black;
+      cursor: pointer;
+      transition: 0.4s;
+    }
 
-        nav h1{
-            color:#2a5298;
-            font-size:22px;
-        }
+    .btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
 
-        nav ul{
-            list-style:none;
-            display:flex;
-            gap:25px;
-        }
-
-        nav ul li{
-            cursor:pointer;
-            font-weight:500;
-        }
-
-        nav ul li:hover{
-            color:#2a5298;
-        }
-
-        /* HERO */
-        .hero{
-            background:linear-gradient(135deg,#1e3c72,#2a5298);
-            color:white;
-            padding:100px 8%;
-            text-align:center;
-        }
-
-        .hero h2{
-            font-size:42px;
-            margin-bottom:20px;
-        }
-
-        .hero p{
-            max-width:600px;
-            margin:auto;
-            margin-bottom:30px;
-        }
-
-        .hero button{
-            padding:12px 30px;
-            border:none;
-            border-radius:30px;
-            background:white;
-            color:#2a5298;
-            font-weight:bold;
-            cursor:pointer;
-            transition:0.3s;
-        }
-
-        .hero button:hover{
-            transform:scale(1.05);
-        }
-
-        /* FORM SECTION */
-        .form-section{
-            padding:80px 8%;
-            background:white;
-        }
-
-        .form-container{
-            max-width:500px;
-            margin:auto;
-            padding:40px;
-            border-radius:12px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.1);
-            animation:fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn{
-            from{opacity:0; transform:translateY(20px);}
-            to{opacity:1; transform:translateY(0);}
-        }
-
-        .form-container h3{
-            text-align:center;
-            margin-bottom:25px;
-            color:#2a5298;
-        }
-
-        input, select{
-            width:100%;
-            padding:12px;
-            margin:10px 0;
-            border:1px solid #ddd;
-            border-radius:6px;
-        }
-
-        input:focus, select:focus{
-            border-color:#2a5298;
-            outline:none;
-        }
-
-        button.submit-btn{
-            width:100%;
-            padding:12px;
-            margin-top:15px;
-            border:none;
-            background:#2a5298;
-            color:white;
-            border-radius:6px;
-            cursor:pointer;
-            transition:0.3s;
-        }
-
-        button.submit-btn:hover{
-            background:#1e3c72;
-        }
-
-        button.submit-btn:disabled{
-            background:grey;
-        }
-
-        .success{
-            text-align:center;
-            margin-top:15px;
-            color:green;
-        }
-
-        /* FOOTER */
-        footer{
-            text-align:center;
-            padding:20px;
-            background:#1e3c72;
-            color:white;
-        }
-
-        /* MOBILE */
-        @media(max-width:768px){
-            nav ul{
-                display:none;
-            }
-
-            .hero h2{
-                font-size:28px;
-            }
-        }
-    </style>
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 
 <body>
-
-<nav>
-    <h1>Abhi Tech</h1>
-    <ul>
-        <li>Home</li>
-        <li>Services</li>
-        <li>Contact</li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <h2>Build Your Future With Abhi Tech</h2>
-    <p>Professional digital solutions, modern websites, and smart technology services.</p>
-    <button onclick="document.querySelector('.form-section').scrollIntoView({behavior:'smooth'})">
-        Register Now
+  <div class="container">
+    <h1>Welcome to Student Registration Portal</h1>
+    <p>Click below to register your details</p>
+    <button class="btn" onclick="window.location.href='register.html'">
+      Register Now
     </button>
-</section>
-
-<section class="form-section">
-    <div class="form-container">
-        <h3>User Registration</h3>
-
-        <form id="myForm">
-            <input type="text" placeholder="Name" required>
-            <input type="text" id="mobile" placeholder="Mobile No" required>
-            <input type="text" placeholder="Father Name">
-            <input type="text" placeholder="Mother Name">
-            <input type="email" placeholder="Email" required>
-
-            <select id="qualification" required>
-                <option value="">Select Qualification</option>
-                <option>10th</option>
-                <option>12th</option>
-                <option>Undergraduate</option>
-                <option>Graduate</option>
-            </select>
-
-            <button type="submit" class="submit-btn">Submit</button>
-            <div class="success" id="message"></div>
-        </form>
-    </div>
-</section>
-
-<footer>
-    © 2026 Abhi Tech Solutions | All Rights Reserved
-</footer>
-
-<script>
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    var submitBtn = document.querySelector(".submit-btn");
-    submitBtn.disabled = true;
-
-    var mobile = document.getElementById("mobile").value;
-
-    if (mobile.length !== 10 || isNaN(mobile)) {
-        alert("Mobile number must be 10 digits!");
-        submitBtn.disabled = false;
-        return;
-    }
-
-    var formData = {
-        name: document.querySelectorAll("input")[0].value,
-        mobile: mobile,
-        father: document.querySelectorAll("input")[2].value,
-        mother: document.querySelectorAll("input")[3].value,
-        email: document.querySelectorAll("input")[4].value,
-        qualification: document.getElementById("qualification").value
-    };
-
-    fetch("https://script.google.com/macros/s/AKfycbyskfIgUlrx7nfwCJ1B8UZNa1AGt59tPAEK14wK5l3q7xWmw1GWXxk6JJzYHYs90USv/exec", {
-        method: "POST",
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("message").innerText = "✔ Registration Successful!";
-        document.getElementById("myForm").reset();
-        submitBtn.disabled = false;
-    })
-    .catch(error => {
-        alert("Error saving data");
-        submitBtn.disabled = false;
-    });
-});
-</script>
-
+  </div>
 </body>
 </html>
